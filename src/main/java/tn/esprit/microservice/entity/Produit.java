@@ -12,7 +12,6 @@ public class Produit {
 	@Field(value = "nom_produit")
 	private String nom_produit;
 
-	@Field(value = "image")
 	private String image;
 	
 	@Field(value = "description")
@@ -27,10 +26,9 @@ public class Produit {
 	@Field(value = "quantite")
 	private int quantite;
 
-	public Produit(String id, String nom_produit, String image, String description, double prixActuel,
+	public Produit( String nom_produit, String image, String description, double prixActuel,
 			boolean disponible, int quantite) {
 		super();
-		this.id = id;
 		this.nom_produit = nom_produit;
 		this.image = image;
 		this.description = description;
@@ -104,6 +102,15 @@ public class Produit {
 		return "Produit [id=" + id + ", nom_produit=" + nom_produit + ", image=" + image + ", description="
 				+ description + ", PrixActuel=" + PrixActuel + ", disponible=" + disponible + ", quantite=" + quantite
 				+ "]";
+	}
+
+	public Produit(String nom_produit, String description, double prixActuel, boolean disponible, int quantite) {
+		super();
+		this.nom_produit = nom_produit;
+		this.description = description;
+		PrixActuel = prixActuel;
+		this.disponible = disponible;
+		this.quantite = quantite;
 	}
 	
 	

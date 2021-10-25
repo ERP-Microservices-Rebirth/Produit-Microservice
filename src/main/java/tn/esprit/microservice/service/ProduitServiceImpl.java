@@ -19,29 +19,30 @@ public class ProduitServiceImpl implements IProduitService {
 	ProduitRepository produitRepository;
 
 	@Override
-	public List<Produit> retrieveAllCustomers() {
+	public List<Produit> retrieveAllProduit() {
 		// TODO Auto-generated method stub
-		List<Produit> customers = produitRepository.findAll();
-		for (Produit customer : customers) {
-			l.info("user +++" + customer);
+		List<Produit> produits = produitRepository.findAll();
+		for (Produit produit : produits) {
+			l.info("user +++" + produit);
 		}
-		return customers;
+		return produits;
 	}
 
+
 	@Override
-	public Produit addCustomer(Produit produit) {
+	public Produit addProduit(Produit produit) {
 		// TODO Auto-generated method stub
 		return produitRepository.save(produit);
 	}
 
 	@Override
-	public void deleteCustomer(String id) {
+	public void deleteProduit(String id) {
 		// TODO Auto-generated method stub
-		produitRepository.deleteById(id);
+		produitRepository.deleteById(id);		
 	}
 
 	@Override
-	public Produit updateCustomer(String id, Produit produit) {
+	public Produit updateProduit(String id, Produit produit) {
 		// TODO Auto-generated method stub
 		if (produitRepository.findById(id).isPresent()) {
 			Produit produitExistant = produitRepository.findById(id).get();
@@ -54,7 +55,7 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public Produit retrieveCustomer(String id) {
+	public Produit retrieveProduit(String id) {
 		// TODO Auto-generated method stub
 		return produitRepository.findById(id).get();
 	}

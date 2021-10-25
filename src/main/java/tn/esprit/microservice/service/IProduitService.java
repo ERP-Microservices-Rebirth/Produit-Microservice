@@ -9,10 +9,10 @@ import tn.esprit.microservice.entity.Produit;
 
 @Service
 public interface IProduitService {
-	List<Produit> retrieveAllCustomers();
-	Produit addCustomer(Produit produit);
-	void deleteCustomer(String id);
-	Produit updateCustomer(String id, Produit produit);
-	Produit retrieveCustomer(String id);
+	List<Produit> retrieveAllProduit();
+	Produit addProduit(Produit produit);
+	void deleteProduit(String id);
+	Produit updateProduit(String id, Produit produit);
+	Produit retrieveProduit(String id);
 
 }

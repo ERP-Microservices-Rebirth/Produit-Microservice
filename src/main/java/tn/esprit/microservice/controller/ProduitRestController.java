@@ -26,15 +26,15 @@ public class ProduitRestController {
 	// Ajouter produit : http://localhost:8081/api/produit
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Produit> addCustomer(@RequestBody Produit produit) {
-		return new ResponseEntity<>(produitService.addCustomer(produit), HttpStatus.OK);
+	public ResponseEntity<Produit> addProduit(@RequestBody Produit produit) {
+		return new ResponseEntity<>(produitService.addProduit(produit), HttpStatus.OK);
 	}
 		
 	// Supprimer Produit : http://localhost:8081/api/produit/{id}
 	@DeleteMapping("/{id}")
 	@ResponseBody
-	public void removeCustomer(@PathVariable("id") String id) {
-		produitService.deleteCustomer(id);
+	public void removeProduit(@PathVariable("id") String id) {
+		produitService.deleteProduit(id);
 	}
 		
 	// Modifier Produit : http://localhost:8081/api/produit/{id}
@@ -42,6 +42,6 @@ public class ProduitRestController {
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Produit> modifyProduit(@PathVariable(value = "id") String id,
 			@RequestBody Produit produit) {
-		return new ResponseEntity<>(produitService.updateCustomer(id,produit), HttpStatus.OK);
+		return new ResponseEntity<>(produitService.updateProduit(id,produit), HttpStatus.OK);
 	}
 }
