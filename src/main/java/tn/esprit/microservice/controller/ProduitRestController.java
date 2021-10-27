@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -44,4 +45,10 @@ public class ProduitRestController {
 			@RequestBody Produit produit) {
 		return new ResponseEntity<>(produitService.updateProduit(id,produit), HttpStatus.OK);
 	}
+	// get Produit by id : http://localhost:8081/api/produit/getProduit/{id}
+		@GetMapping(value = "/getProduit/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+		@ResponseStatus(HttpStatus.OK)
+		public ResponseEntity<Produit> GetProduit(@PathVariable(value = "id") String id) {
+			return new ResponseEntity<>(produitService.retrieveProduit(id), HttpStatus.OK);
+		}
 }
