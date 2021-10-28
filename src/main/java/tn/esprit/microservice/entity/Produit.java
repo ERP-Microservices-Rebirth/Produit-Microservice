@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document(collection = "produit")
+@Document(collection = "produits")
 public class Produit {
 	@Id
 	private String id;
@@ -18,16 +18,16 @@ public class Produit {
 	private String description;
 
 	@Field(value = "PrixActuel")
-	private double PrixActuel;
+	private String PrixActuel;
 	
 	@Field(value = "disponible")
-	private boolean disponible;
+	private String disponible;
 
 	@Field(value = "quantite")
-	private int quantite;
+	private String quantite;
 
-	public Produit( String nom_produit, String image, String description, double prixActuel,
-			boolean disponible, int quantite) {
+	public Produit( String nom_produit, String image, String description, String prixActuel,
+			String disponible, String quantite) {
 		super();
 		this.nom_produit = nom_produit;
 		this.image = image;
@@ -73,27 +73,27 @@ public class Produit {
 		this.description = description;
 	}
 
-	public double getPrixActuel() {
+	public String getPrixActuel() {
 		return PrixActuel;
 	}
 
-	public void setPrixActuel(double prixActuel) {
+	public void setPrixActuel(String prixActuel) {
 		PrixActuel = prixActuel;
 	}
 
-	public boolean isDisponible() {
+	public String isDisponible() {
 		return disponible;
 	}
 
-	public void setDisponible(boolean disponible) {
+	public void setDisponible(String disponible) {
 		this.disponible = disponible;
 	}
 
-	public int getQuantite() {
+	public String getQuantite() {
 		return quantite;
 	}
 
-	public void setQuantite(int quantite) {
+	public void setQuantite(String quantite) {
 		this.quantite = quantite;
 	}
 
@@ -104,9 +104,21 @@ public class Produit {
 				+ "]";
 	}
 
-	public Produit(String nom_produit, String description, double prixActuel, boolean disponible, int quantite) {
+	public Produit(String nom_produit, String description, String prixActuel, String disponible, String quantite) {
 		super();
 		this.nom_produit = nom_produit;
+		this.description = description;
+		PrixActuel = prixActuel;
+		this.disponible = disponible;
+		this.quantite = quantite;
+	}
+
+	public Produit(String id, String nom_produit, String image, String description, String prixActuel,
+			String disponible, String quantite) {
+		super();
+		this.id = id;
+		this.nom_produit = nom_produit;
+		this.image = image;
 		this.description = description;
 		PrixActuel = prixActuel;
 		this.disponible = disponible;

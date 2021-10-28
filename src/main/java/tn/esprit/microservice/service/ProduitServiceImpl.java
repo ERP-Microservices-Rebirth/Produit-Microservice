@@ -22,6 +22,7 @@ public class ProduitServiceImpl implements IProduitService {
 	public List<Produit> retrieveAllProduit() {
 		// TODO Auto-generated method stub
 		List<Produit> produits = produitRepository.findAll();
+		System.out.println("ttttttttt"+produits);
 		for (Produit produit : produits) {
 			l.info("user +++" + produit);
 		}

@@ -1,5 +1,7 @@
 package tn.esprit.microservice.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import tn.esprit.microservice.entity.Produit;
 import tn.esprit.microservice.service.IProduitService;
@@ -25,9 +28,9 @@ public class ProduitRestController {
 	IProduitService produitService;
 
 	// Ajouter produit : http://localhost:8081/api/produit
-	@PostMapping
+	@PostMapping("/{produit}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Produit> addProduit(@RequestBody Produit produit) {
+	public ResponseEntity<Produit> addProduit(@PathVariable("produit") Produit produit) {
 		return new ResponseEntity<>(produitService.addProduit(produit), HttpStatus.OK);
 	}
 		
@@ -45,10 +48,19 @@ public class ProduitRestController {
 			@RequestBody Produit produit) {
 		return new ResponseEntity<>(produitService.updateProduit(id,produit), HttpStatus.OK);
 	}
+	
 	// get Produit by id : http://localhost:8081/api/produit/getProduit/{id}
-		@GetMapping(value = "/getProduit/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-		@ResponseStatus(HttpStatus.OK)
-		public ResponseEntity<Produit> GetProduit(@PathVariable(value = "id") String id) {
-			return new ResponseEntity<>(produitService.retrieveProduit(id), HttpStatus.OK);
+		@GetMapping(value = "/getProduit/{id}")
+		@ResponseStatus(HttpStatus.CREATED)
+		public Produit GetProduit(@PathVariable(value = "id") String id) {
+			return produitService.retrieveProduit(id);
+		}
+		
+		// list produit : http://localhost:8081/api/produit/listProduit
+		@GetMapping("/listProduit")
+		@CrossOrigin(origins = "http://localhost:3001")
+		@ResponseStatus(HttpStatus.CREATED)
+		public List<Produit> retrieveAllProduit() {
+			return produitService.retrieveAllProduit();
 		}
 }
