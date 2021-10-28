@@ -26,5 +26,6 @@ spring:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   data:
     mongodb:
-      uri: ${MONGO_URI:mongodb+srv://admin:admin@cluster1.h0jm2.mongodb.net/Produit-microservice?retryWrites=true&w=majority}
+      uri: ${mongodb+srv://admin:admin@cluster1.h0jm2.mongodb.net/Produit-microservice?retryWrites=true&w=majority}
+  profile: heroku
  
